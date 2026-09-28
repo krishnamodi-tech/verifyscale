@@ -1,0 +1,813 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VerifyScale | Online Verification System for Weighing & Measuring Instruments</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- FULLSCREEN HIGH-TECH SPLASH INTRO SCREEN -->
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-glow-sphere"></div>
+    <div class="splash-content">
+      <div class="splash-ring splash-ring-outer"></div>
+      <div class="splash-ring splash-ring-inner"></div>
+      <div class="splash-logo-box">
+        <img src="logo.jpg" alt="VerifyScale" class="splash-logo-img">
+        <div class="splash-laser-sweep"></div>
+      </div>
+      <div class="splash-text-group">
+        <h1 class="splash-brand-title">VerifyScale</h1>
+        <div class="splash-motto">VERIFY • MEASURE • TRUST</div>
+      </div>
+      <div class="splash-progress-group">
+        <div class="splash-boot-text" id="splashBootText">Initializing System...</div>
+        <div class="splash-progress-track">
+          <div class="splash-progress-bar" id="splashProgressBar"></div>
+        </div>
+      </div>
+      <button class="splash-skip-btn" onclick="app.dismissSplash()">Skip Intro ➔</button>
+    </div>
+  </div>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="container">
+      <div class="nav-row">
+        
+        <!-- Brand / Identity -->
+        <div class="brand-container" onclick="app.switchView('merchant')">
+          <div class="brand-icon-box">
+            <img src="logo.jpg" alt="VerifyScale Logo" class="brand-logo-img">
+          </div>
+          <div>
+            <div class="brand-name">
+              VerifyScale
+              <span class="brand-badge">SIH 2026 • SIH26036</span>
+            </div>
+            <div style="font-size: 0.725rem; color: var(--text-muted); font-family: var(--font-mono);">
+              Team: NEXUS NOVA • VERIFY • MEASURE • TRUST
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Strip & Quick Actions -->
+        <div class="header-status-strip">
+          <div class="live-beacon">
+            <span class="pulse-dot"></span>
+            <span>LIVE TELEMETRY</span>
+          </div>
+
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary);" id="liveClock">
+            --:--:-- IST
+          </div>
+
+          <button class="icon-btn active" id="soundToggleBtn" title="Sound Effects Enabled">
+            <span style="font-size: 1rem;">🔊</span>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('presentationGuideModal').classList.add('active')">
+            🎯 Demo Pitch Guide
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Role Switcher Bar -->
+    <div class="role-tabs-bar">
+      <div class="container">
+        <div class="role-tabs">
+          <button class="tab-btn active" data-view="merchant">
+            <span>🏢 Merchant Application</span>
+            <span class="tab-badge">Step 1</span>
+          </button>
+          <button class="tab-btn" data-view="inspector">
+            <span>👮 Field Inspector Workbench</span>
+            <span class="tab-badge">Step 2</span>
+          </button>
+          <button class="tab-btn" data-view="certificate">
+            <span>📜 Holographic Certificate</span>
+            <span class="tab-badge">Step 3</span>
+          </button>
+          <button class="tab-btn" data-view="public">
+            <span>📱 Public QR Verification</span>
+            <span class="tab-badge">Step 4</span>
+          </button>
+          <button class="tab-btn" data-view="admin">
+            <span>🏛️ Department Command Center</span>
+            <span class="tab-badge">Analytics</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="container">
+
+    <!-- ============================================================== -->
+    <!-- VIEW 1: MERCHANT REGISTRATION & ONLINE APPLICATION -->
+    <!-- ============================================================== -->
+    <section id="view-merchant" class="view-section active">
+      <div class="section-head">
+        <div>
+          <h2>
+            <span>🏢</span> Merchant Instrument Registration & Application
+          </h2>
+          <p>
+            Business owners & vendors register commercial weighing instruments, upload technical specs, calculate government fees, and initiate contactless verification.
+          </p>
+        </div>
+        <div>
+          <span class="badge-status badge-verified">Direct Payment Gateway Enabled</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem;">
+        
+        <!-- Registration Form -->
+        <div class="glass-card">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📝</span> New Instrument Verification Application
+          </h3>
+
+          <form id="scaleRegForm" onsubmit="event.preventDefault(); app.openPaymentModal('Commercial Scale Verification (Class III)', 350);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Business / Shop Name</label>
+                <input type="text" class="form-input" value="Sharma Provisions & Superstore" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Merchant GSTIN / Trade License</label>
+                <input type="text" class="form-input" value="07AAAAA0000A1Z5" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Business Physical Location (For Geo-Routing)</label>
+              <input type="text" class="form-input" value="Shop #14, Main Market, Chandni Chowk, Central Delhi - 110006" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Instrument Make & Model</label>
+                <input type="text" class="form-input" value="Essae DX-851 High Precision Electronic Scale" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Scale Serial Number (Stamped)</label>
+                <input type="text" class="form-input" value="SN-ES851-9941" required>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Accuracy Class</label>
+                <select class="form-select">
+                  <option selected>Class III (Commercial Retail)</option>
+                  <option>Class II (Jewellery / Precision)</option>
+                  <option>Class I (Laboratory Micro)</option>
+                  <option>Class IIII (Industrial Weighbridge)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Capacity (Max)</label>
+                <input type="text" class="form-input" value="30.000 kg" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Verification Scale Interval (e)</label>
+                <input type="text" class="form-input" value="0.005 kg (5g)" required>
+              </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed var(--border-subtle); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">STATUTORY FEE (LEGAL METROLOGY SCHEDULE)</span>
+                  <span style="font-size: 1.25rem; font-weight: 800; color: #ffffff; font-family: var(--font-mono);">₹350.00</span>
+                  <span style="font-size: 0.75rem; color: var(--accent-emerald);"> (Zero Convenience Fee)</span>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Processing SLA:</span>
+                  <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan);">Within 48 Hours</p>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              💳 Pay Government Verification Fee via Razorpay →
+            </button>
+          </form>
+        </div>
+
+        <!-- Active Instruments & Quick Status -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <div class="glass-card">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📊</span> Registered Instruments
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong style="font-size: 0.9rem; color: #ffffff;">Essae DX-851 (Counter #1)</strong>
+                  <span class="badge-status badge-verified">VERIFIED</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">
+                  UID: VS-2026-DL-8492 • Expires: 01 March 2027
+                </p>
+                <div style="margin-top: 0.5rem;">
+                  <a href="javascript:void(0)" onclick="app.viewFullCert('VS-2026-DL-8492')" style="color: var(--accent-cyan); font-size: 0.8rem; text-decoration: none; font-weight: 600;">
+                    View Digital Hologram Certificate ↗
+                  </a>
+                </div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong style="font-size: 0.9rem; color: #ffffff;">Platform Weighbridge (Back Storage)</strong>
+                  <span class="badge-status badge-pending">PENDING AUDIT</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">
+                  UID: VS-2026-DL-9104 • Inspector Assigned: In Transit
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Highlights Card -->
+          <div class="glass-card" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%); border-color: rgba(6, 182, 212, 0.2);">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;">
+              ⚡ End-to-End Paperless Benefits
+            </h4>
+            <ul style="font-size: 0.825rem; color: var(--text-secondary); padding-left: 1.25rem; line-height: 1.7;">
+              <li>Instant verification request lodging with GPS pinning.</li>
+              <li>Eliminates counterfeit paper certificates and manual bribes.</li>
+              <li>Dynamic QR code seal attached directly to merchant storefront.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- VIEW 2: FIELD INSPECTOR WORKBENCH & CALIBRATION SIMULATOR -->
+    <!-- ============================================================== -->
+    <section id="view-inspector" class="view-section">
+      <div class="section-head">
+        <div>
+          <h2>
+            <span>👮</span> Field Inspector Calibration Workbench
+          </h2>
+          <p>
+            Interactive Legal Metrology testing suite. Place calibrated standard weights, simulate eccentric corner load drift, run NIST Handbook 44 tolerance verification, and inspect physical seals.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button class="btn btn-cyan btn-sm" onclick="app.openAIVisionModal()">
+            🤖 AI Vision & Seal Scanner
+          </button>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem;">
+        
+        <!-- Live Scale Simulator Box -->
+        <div class="scale-simulator-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">PHYSICAL TEST BENCH</span>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">Electronic Bench Scale (Essae DX-851)</h3>
+            </div>
+            <span class="badge-status badge-verified">
+              STANDARDS: NIST HB 44 / OIML R76
+            </span>
+          </div>
+
+          <!-- Scale Pan (Weighing Surface) -->
+          <div class="scale-pan" id="scalePan">
+            <div class="pan-quadrants">
+              <div class="quadrant-zone" data-quadrant="TL">Top Left (Q1)</div>
+              <div class="quadrant-zone" data-quadrant="TR">Top Right (Q2)</div>
+              <div class="quadrant-zone" data-quadrant="BL">Bottom Left (Q3)</div>
+              <div class="quadrant-zone" data-quadrant="BR">Bottom Right (Q4)</div>
+            </div>
+            <div style="text-align: center; z-index: 5; pointer-events: none;">
+              <span style="font-size: 2.25rem;">⚖️</span>
+              <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-top: 0.25rem;">
+                Click Calibrated Weights Below to Place on Scale Pan
+              </p>
+              <p style="font-size: 0.725rem; color: var(--text-muted);">
+                Click quadrants to test eccentric load error distribution
+              </p>
+            </div>
+          </div>
+
+          <!-- LCD Readout Screen -->
+          <div class="scale-lcd-bezel">
+            <div class="scale-lcd-screen">
+              <div>
+                <span class="lcd-value" id="lcdValue">0.000</span>
+                <span class="lcd-unit">kg</span>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.7rem; color: #38bdf8; font-family: var(--font-mono); display: block;">CLASS III</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">e = 0.005 kg</span>
+              </div>
+            </div>
+
+            <div class="lcd-indicators">
+              <span class="lcd-indicator-item active" id="indicatorZero">ZERO</span>
+              <span class="lcd-indicator-item" id="indicatorTare">NET / TARE</span>
+              <span class="lcd-indicator-item active" id="indicatorStable">STABLE</span>
+            </div>
+          </div>
+
+          <!-- Calibrated Standard Weights Shelf -->
+          <div style="margin-top: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">
+                CALIBRATED STANDARD WEIGHTS (M1 CLASS):
+              </span>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-secondary btn-sm" id="btnTareScale">Zero / Tare</button>
+                <button class="btn btn-secondary btn-sm" id="btnResetScale">Reset Pan</button>
+              </div>
+            </div>
+
+            <div class="weights-rack">
+              <div class="weight-item" data-weight="0.100">
+                <span>🪙</span> 100g Test Standard
+              </div>
+              <div class="weight-item" data-weight="0.200">
+                <span>🪙</span> 200g Test Standard
+              </div>
+              <div class="weight-item" data-weight="0.500">
+                <span>🪙</span> 500g Test Standard
+              </div>
+              <div class="weight-item" data-weight="1.000">
+                <span>⚖️</span> 1.000 kg Cast Iron
+              </div>
+              <div class="weight-item" data-weight="2.000">
+                <span>⚖️</span> 2.000 kg Cast Iron
+              </div>
+              <div class="weight-item" data-weight="5.000">
+                <span>🧱</span> 5.000 kg Hexagonal
+              </div>
+            </div>
+          </div>
+
+          <!-- Tolerance Check Trigger -->
+          <div style="margin-top: 1.75rem;">
+            <button class="btn btn-primary" id="btnRunToleranceCheck" style="width: 100%;">
+              📐 Calculate NIST MPE Tolerance & Calibration Verdict
+            </button>
+          </div>
+
+          <!-- Result Container -->
+          <div id="nistResultBox" style="margin-top: 1.25rem; display: none;"></div>
+
+        </div>
+
+        <!-- Inspector Telemetry & Geo-Routing List -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <div class="glass-card">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📍</span> Geo-Routed Inspection Queue
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 0.75rem; padding: 0.875rem;">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: #ffffff; font-size: 0.9rem;">Sharma Provisions (Current Site)</strong>
+                  <span class="badge-status badge-verified">ACTIVE TEST</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+                  Chandni Chowk Market • GPS: 28.6506° N, 77.2303° E
+                </p>
+                <div style="margin-top: 0.5rem; display: flex; gap: 1rem; font-size: 0.75rem; font-family: var(--font-mono);">
+                  <span>Distance: 0.0 km</span>
+                  <span style="color: var(--accent-emerald);">ETA: ON-SITE</span>
+                </div>
+              </div>
+
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: #ffffff; font-size: 0.9rem;">Royal Sweets & Dairy</strong>
+                  <span class="badge-status badge-pending">NEXT IN ROUTE</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+                  Nai Sarak, Old Delhi • GPS: 28.6515° N, 77.2289° E
+                </p>
+                <div style="margin-top: 0.5rem; display: flex; gap: 1rem; font-size: 0.75rem; font-family: var(--font-mono);">
+                  <span>Distance: 1.2 km</span>
+                  <span style="color: var(--accent-cyan);">ETA: 18 mins</span>
+                </div>
+              </div>
+
+              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: #ffffff; font-size: 0.9rem;">Bharat Petroleum Fuel Dispenser #3</strong>
+                  <span class="badge-status badge-pending">SCHEDULED</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+                  Asaf Ali Road • Volumetric 5L Measure Check
+                </p>
+                <div style="margin-top: 0.5rem; display: flex; gap: 1rem; font-size: 0.75rem; font-family: var(--font-mono);">
+                  <span>Distance: 3.4 km</span>
+                  <span style="color: var(--text-muted);">ETA: 45 mins</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inspector Handbook Standards -->
+          <div class="glass-card">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📚</span> Standards Reference (NIST Handbook 44)
+            </h4>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;">
+              <p><strong>Repeatability Test:</strong> 3 consecutive load tests must not deviate by more than the Absolute MPE.</p>
+              <p style="margin-top: 0.4rem;"><strong>Eccentric Test:</strong> Placing a 1/3 max test load on 4 quadrants must stay within ±1 division interval.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- VIEW 3: HOLOGRAPHIC DIGITAL CERTIFICATE & SEAL -->
+    <!-- ============================================================== -->
+    <section id="view-certificate" class="view-section">
+      <div class="section-head">
+        <div>
+          <h2>
+            <span>📜</span> Tamper-Proof Digital Verification Certificate
+          </h2>
+          <p>
+            Issued under The Legal Metrology Act, 2009. Sealed with dynamic SHA-256 cryptographic signature, 3D interactive holographic watermark, and scannable public QR code.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;" class="no-print">
+          <button class="btn btn-primary btn-sm" onclick="window.print()">
+            🖨️ Print / Save PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Container where dynamic certificate renders -->
+      <div id="certificateContainer"></div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- VIEW 4: PUBLIC CITIZEN VERIFICATION & SCANNER PORTAL -->
+    <!-- ============================================================== -->
+    <section id="view-public" class="view-section">
+      <div class="section-head">
+        <div>
+          <h2>
+            <span>📱</span> Public Scale Verification & Consumer Protection
+          </h2>
+          <p>
+            Empowering consumers, shoppers, and auditors to verify any scale in any store immediately. Scan the QR code or search by Scale UID to verify validity and report short-weighing fraud.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-danger btn-sm" onclick="app.openWhistleblowerModal()">
+            🚨 Report Scale Fraud / Tampering
+          </button>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        
+        <!-- Interactive QR Scanner Box -->
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📷</span> Live Camera QR Scanner Simulation
+          </h3>
+
+          <div class="scanner-viewport">
+            <div class="scanner-crosshair">
+              <div class="scan-laser-line"></div>
+              <div style="text-align: center; color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-mono);">
+                ALIGN QR CODE<br>WITHIN FRAME
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <span style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">
+              SIMULATE STORE VISITS (1-CLICK DEMO SCANS):
+            </span>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="weight-item simulate-qr-chip" data-uid="VS-2026-DL-8492">
+                Grocery: Sharma Provisions (Valid)
+              </button>
+              <button class="weight-item simulate-qr-chip" data-uid="VS-2026-MH-3310">
+                Grain Hub: Vashi APMC (Valid)
+              </button>
+              <button class="weight-item simulate-qr-chip" data-uid="VS-FAKE-UNKNOWN-99">
+                Suspicious Shop (Unverified / Fake)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search by UID or Shop Name -->
+        <div class="glass-card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🔍</span> Manual Scale Verification Search
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label">Enter Scale UID or Serial Number</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="text" id="searchScaleInput" class="form-input" placeholder="e.g. VS-2026-DL-8492 or Sharma" value="VS-2026-DL-8492">
+              <button class="btn btn-primary" id="btnSearchScale">Verify</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Search Results -->
+          <div id="publicSearchResults">
+            <div style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+              Enter a Scale Unique ID or click a demo scan button to check authenticity.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- VIEW 5: GOVERNMENT DEPARTMENT COMMAND CENTER & ANALYTICS -->
+    <!-- ============================================================== -->
+    <section id="view-admin" class="view-section">
+      <div class="section-head">
+        <div>
+          <h2>
+            <span>🏛️</span> Central Metrology Telemetry & Command Center
+          </h2>
+          <p>
+            Real-time nation-wide monitoring of commercial instruments, inspector performance, automated renewal cycles, and tamper anomaly detection.
+          </p>
+        </div>
+        <div>
+          <span class="live-beacon">
+            <span class="pulse-dot"></span>
+            <span>DATA LAKE SYNCED</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Stats Metric Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+        
+        <div class="glass-card">
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Active Verified Scales</span>
+          <div style="font-size: 2rem; font-weight: 800; color: #ffffff; font-family: var(--font-mono); margin-top: 0.25rem;">
+            48,290
+          </div>
+          <span style="font-size: 0.75rem; color: var(--accent-emerald);">↑ +12.4% this quarter</span>
+        </div>
+
+        <div class="glass-card">
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Compliance Rate</span>
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent-emerald); font-family: var(--font-mono); margin-top: 0.25rem;">
+            97.4%
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Against national target of 95%</span>
+        </div>
+
+        <div class="glass-card">
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Govt. Fees Collected</span>
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.25rem;">
+            ₹1.68 Cr
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Direct Treasury Credit</span>
+        </div>
+
+        <div class="glass-card">
+          <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Fraud Reports Resolved</span>
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent-amber); font-family: var(--font-mono); margin-top: 0.25rem;">
+            142
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Average SLA: 24.5 hrs</span>
+        </div>
+
+      </div>
+
+      <!-- District Compliance Breakdown Table -->
+      <div class="glass-card" style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🗺️</span> District Metrology Compliance & Inspection Coverage
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Real-time compliance ranking across major wholesale markets and commercial hubs.
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>District / Commercial Hub</th>
+                <th>Total Registered</th>
+                <th>Active Verified</th>
+                <th>Compliance</th>
+                <th>Audit Action</th>
+              </tr>
+            </thead>
+            <tbody id="districtComplianceBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cryptographic Audit Ledger Stream -->
+      <div class="glass-card">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>⛓️</span> Immutable Verification Audit Stream (SHA-256 Ledger)
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Every calibration pass, fee transaction, and inspector signature is cryptographically appended to prevent retroactive tampering.
+        </p>
+        <div id="auditLogStream" style="display: flex; flex-direction: column; gap: 0.25rem;"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: RAZORPAY PAYMENT GATEWAY SIMULATION -->
+  <!-- ============================================================== -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="rzp-modal">
+      <div class="rzp-header">
+        <div>
+          <div style="font-size: 0.75rem; opacity: 0.8;">LEGAL METROLOGY GATEWAY</div>
+          <strong id="payTitle" style="font-size: 1rem;">Verification Fee Checkout</strong>
+        </div>
+        <button class="modal-close" style="position: static; color: white;" onclick="app.closePaymentModal()">×</button>
+      </div>
+      <div class="rzp-body">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.25rem;">
+          <span style="font-size: 0.85rem; color: #64748b;">Amount Payable:</span>
+          <span id="payAmount" style="font-size: 1.5rem; font-weight: 800; color: #0f172a; font-family: var(--font-mono);">₹350</span>
+        </div>
+
+        <button class="rzp-method-btn" onclick="app.processPayment('UPI (GPay / PhonePe / Paytm)')">
+          <span style="font-size: 1.25rem;">📱</span>
+          <div style="text-align: left;">
+            <div>UPI Instant Pay</div>
+            <div style="font-size: 0.75rem; color: #64748b;">Google Pay, PhonePe, Paytm QR</div>
+          </div>
+        </button>
+
+        <button class="rzp-method-btn" onclick="app.processPayment('Credit / Debit Card')">
+          <span style="font-size: 1.25rem;">💳</span>
+          <div style="text-align: left;">
+            <div>Card (Visa, RuPay, Mastercard)</div>
+            <div style="font-size: 0.75rem; color: #64748b;">All Indian Commercial Banks</div>
+          </div>
+        </button>
+
+        <button class="rzp-method-btn" onclick="app.processPayment('Govt. NetBanking')">
+          <span style="font-size: 1.25rem;">🏛️</span>
+          <div style="text-align: left;">
+            <div>NetBanking / e-Challan</div>
+            <div style="font-size: 0.75rem; color: #64748b;">Direct Treasury Sub-Account Transfer</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: AI VISION & OCR SIMULATOR -->
+  <!-- ============================================================== -->
+  <div class="modal-overlay" id="aiVisionModal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="app.closeAIVisionModal()">×</button>
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🤖</span> Gemini AI Vision Scale Inspection Engine
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        Automated image recognition verifies physical lead wire stamps, checks for unauthorized drill holes or microcontroller bypass chips, and OCR reads display segments.
+      </p>
+
+      <div style="background: #020617; border-radius: 1rem; height: 200px; display: flex; align-items: center; justify-content: center; position: relative; border: 1px dashed rgba(6, 182, 212, 0.4);">
+        <div style="text-align: center;">
+          <span style="font-size: 3rem;">📸</span>
+          <p style="font-size: 0.8rem; color: var(--accent-cyan); font-family: var(--font-mono); margin-top: 0.5rem;">
+            SCALE_CAMERA_FEED_STREAM [LIVE]
+          </p>
+        </div>
+      </div>
+
+      <div id="aiScanStatus" style="margin-top: 1rem; font-size: 0.85rem; font-family: var(--font-mono); color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Status updated dynamically -->
+      </div>
+
+      <div id="aiScanResults"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: CONSUMER GRIEVANCE / WHISTLEBLOWER REPORT -->
+  <!-- ============================================================== -->
+  <div class="modal-overlay" id="whistleblowerModal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="app.closeWhistleblowerModal()">×</button>
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🚨</span> Citizen Grievance & Scale Fraud Report
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        Report suspected short-weighing, broken seals, or altered scales directly to the District Legal Metrology Officer.
+      </p>
+
+      <form onsubmit="event.preventDefault(); app.submitWhistleblowerReport();">
+        <div class="form-group">
+          <label class="form-label">Scale UID or Merchant Name</label>
+          <input type="text" id="reportScaleUid" class="form-input" placeholder="e.g. VS-2026-DL-8492 or Shop Name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nature of Complaint</label>
+          <select class="form-select">
+            <option>Short-weighing (Purchased 1kg, delivered 850g)</option>
+            <option>Broken or missing Government Lead Stamp / Seal</option>
+            <option>Refusal to display digital readout clearly</option>
+            <option>Suspected remote-control weight manipulation device</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Photo Evidence / Cash Receipt (Simulated Upload)</label>
+          <input type="file" class="form-input" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-danger" style="width: 100%;">
+          Submit Official Grievance to Legal Metrology Inspector →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: DEMO PITCH GUIDE FOR HACKATHON JUDGES -->
+  <!-- ============================================================== -->
+  <div class="modal-overlay" id="presentationGuideModal">
+    <div class="modal-container" style="max-width: 680px;">
+      <button class="modal-close" onclick="document.getElementById('presentationGuideModal').classList.remove('active')">×</button>
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🎯</span> SIH 2026 Presentation Walkthrough Guide
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        Step-by-step presentation script designed for <strong>Team NEXUS NOVA (SIH26036)</strong> to wow the judges:
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+          <strong style="color: var(--accent-emerald);">Slide 2 Demo - Step 1: Merchant Lodges Request & Pays Fee</strong>
+          <p style="margin-top: 0.25rem;">Show the Merchant Application form. Click "Pay Government Verification Fee" to showcase the interactive Razorpay payment modal and automated treasury receipt.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+          <strong style="color: var(--accent-cyan);">Slide 3 & 4 Demo - Step 2: Inspector NIST Workbench & AI Scanner</strong>
+          <p style="margin-top: 0.25rem;">Switch to Field Inspector. Click on the 100g, 1kg, 5kg test weights! Notice the digital LCD flutter and settle. Click "Calculate NIST MPE Tolerance" to show mathematical compliance under NIST Handbook 44 / OIML R76, and open the AI Vision OCR simulator.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+          <strong style="color: var(--accent-purple);">Slide 3 & 5 Demo - Step 3: Holographic SHA-256 Certificate</strong>
+          <p style="margin-top: 0.25rem;">Move your mouse over the certificate to reveal the real-time 3D tilt and shimmering holographic security seal with verifiable SHA-256 hash.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+          <strong style="color: var(--accent-amber);">Slide 5 Demo - Step 4: Citizen QR Scanner & Whistleblower</strong>
+          <p style="margin-top: 0.25rem;">Switch to Public QR Verification. Click the demo chips to simulate scanning a genuine vs a fraudulent store scale with instant consumer whistleblowing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="app.js"></script>
+</body>
+</html>
