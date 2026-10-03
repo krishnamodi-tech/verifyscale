@@ -991,7 +991,14 @@ main {
 @media (max-width: 960px) {
   .cert-grid { grid-template-columns: 1fr; }
   .nav-row { height: auto; padding: 1rem 0; flex-direction: column; gap: 0.75rem; }
-  .header-status-strip { width: 100%; justify-content: space-between; }
+  .header-status-strip { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  
+  /* Make all inline grid layouts stack on mobile */
+  div[style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .role-tabs { padding-bottom: 0.5rem; }
 }
 
 /* Print styles for official certificate */
@@ -1135,3 +1142,152 @@ main {
 .splash-skip-btn { margin-top: 1.25rem; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; font-size: 0.75rem; padding: 0.35rem 0.9rem; border-radius: 0.5rem; cursor: pointer; animation: splashFadeUp 0.8s ease 0.7s forwards; opacity: 0; }
 .splash-skip-btn:hover { border-color: #38bdf8; color: #ffffff; background: rgba(56, 189, 248, 0.1); }
 @keyframes splashFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+
+/* ==============================================================
+   e-Mitra & Officer Assisted Registration Mode + OTP Styles
+   ============================================================== */
+.reg-mode-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 0.35rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.reg-mode-chip {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.65rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.reg-mode-chip:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.reg-mode-chip.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+.operator-banner {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 0.875rem;
+  padding: 0.875rem 1.15rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.otp-box-wrapper {
+  background: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.otp-digit-field {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  letter-spacing: 0.45em;
+  text-align: center;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 0.65rem;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  max-width: 240px;
+}
+
+.otp-digit-field:focus {
+  outline: none;
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Simulated Mobile SMS Push Notification at Top */
+.sms-push-card {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  max-width: 400px;
+  width: calc(100% - 2.5rem);
+  background: #0f172a;
+  border: 1px solid #38bdf8;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  animation: slideInSms 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInSms {
+  from { transform: translateY(-40px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.sms-push-card .sms-icon-bubble {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.voice-help-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voice-help-btn:hover {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+}

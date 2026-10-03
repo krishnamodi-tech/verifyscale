@@ -1,11 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerifyScale | Online Verification System for Weighing & Measuring Instruments</title>
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -84,7 +84,7 @@
       <div class="container">
         <div class="role-tabs">
           <button class="tab-btn active" data-view="merchant">
-            <span>🏢 Merchant Application</span>
+            <span>🏢 Merchant / e-Mitra Kiosk</span>
             <span class="tab-badge">Step 1</span>
           </button>
           <button class="tab-btn" data-view="inspector">
@@ -118,14 +118,80 @@
       <div class="section-head">
         <div>
           <h2>
-            <span>🏢</span> Merchant Instrument Registration & Application
+            <span>🏢</span> Scale Verification Portal & Assisted e-Mitra Kiosk
           </h2>
           <p>
-            Business owners & vendors register commercial weighing instruments, upload technical specs, calculate government fees, and initiate contactless verification.
+            Inclusive digital metrology ecosystem: Educated retailers can register directly, while uneducated vendors register via local e-Mitra / CSC kiosks or on-site mandi inspection camps using mobile OTP consent.
           </p>
         </div>
-        <div>
-          <span class="badge-status badge-verified">Direct Payment Gateway Enabled</span>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span class="badge-status badge-verified">DUAL ACCESS & OTP ENABLED</span>
+          <button type="button" class="voice-help-btn" onclick="app.playVoiceAssistance()">
+            🔊 बोलकर सुनें (Audio Help)
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PROMINENT DUAL-ACCESS MODE SWITCHER BANNER -->
+      <!-- ============================================================== -->
+      <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.95) 100%); border: 2px solid rgba(6, 182, 212, 0.5); border-radius: 1.25rem; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(6, 182, 212, 0.15);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); pb: 0.75rem; padding-bottom: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="pulse-dot"></span>
+            <strong style="font-size: 0.9rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em;">
+              👉 Choose Who is Submitting this Scale Registration:
+            </strong>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">
+            Grassroots Inclusivity Architecture
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          
+          <!-- Mode 1: Direct Retailer -->
+          <div id="modeCard-self" class="reg-mode-card active" onclick="app.setRegistrationMode('self')" style="background: rgba(16, 185, 129, 0.12); border: 2px solid #10b981; border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.5rem;">👤</span>
+              <span class="mode-tag" style="background: #10b981; color: #064e3b; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">CURRENT ACTIVE</span>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+              1. Direct Retailer Self-Registration
+            </h4>
+            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+              For educated shopkeepers & merchants. Log in with your mobile number + instant OTP.
+            </p>
+          </div>
+
+          <!-- Mode 2: e-Mitra / CSC Kiosk -->
+          <div id="modeCard-emitra" class="reg-mode-card" onclick="app.setRegistrationMode('emitra')" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.5rem;">🏛️</span>
+              <span class="mode-tag" style="background: rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">ASSISTED KIOSK</span>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+              2. e-Mitra / CSC Kiosk Operator
+            </h4>
+            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+              For uneducated/rural retailers. Operator fills form & verifies customer via SMS OTP consent.
+            </p>
+          </div>
+
+          <!-- Mode 3: Metrology Officer Camp -->
+          <div id="modeCard-officer" class="reg-mode-card" onclick="app.setRegistrationMode('officer')" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.5rem;">👮</span>
+              <span class="mode-tag" style="background: rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">OFFICIAL SPOT CAMP</span>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+              3. Metrology Officer On-Site Camp
+            </h4>
+            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+              Officers spot-register vendor scales right at mandi stalls with instant merchant OTP sign-off.
+            </p>
+          </div>
+
         </div>
       </div>
 
@@ -133,11 +199,87 @@
         
         <!-- Registration Form -->
         <div class="glass-card">
-          <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>📝</span> New Instrument Verification Application
-          </h3>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 id="regRoleTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+                <span>📝</span> Retailer / Business Direct Self-Registration
+              </h3>
+              <p id="regRoleDesc" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
+                Designed for all retailers — self-service or assisted through e-Mitra / CSC kiosk & field inspection officers.
+              </p>
+            </div>
+            <button type="button" class="voice-help-btn" onclick="app.playVoiceAssistance()">
+              🔊 बोलकर सुनें / Audio Help
+            </button>
+          </div>
+
+          <!-- Dual Access Registration Mode Selector -->
+          <div class="reg-mode-selector">
+            <button type="button" class="reg-mode-chip active" data-mode="self" onclick="app.setRegistrationMode('self')">
+              <span>👤 Retailer (Self-OTP)</span>
+            </button>
+            <button type="button" class="reg-mode-chip" data-mode="emitra" onclick="app.setRegistrationMode('emitra')">
+              <span>🏛️ e-Mitra / CSC Kiosk</span>
+            </button>
+            <button type="button" class="reg-mode-chip" data-mode="officer" onclick="app.setRegistrationMode('officer')">
+              <span>👮 Metrology Officer Camp</span>
+            </button>
+          </div>
+
+          <!-- Operator Session Banner (Visible in e-Mitra / Officer Mode) -->
+          <div id="operatorBanner" class="operator-banner" style="display: none;">
+            <div>
+              <span class="badge-status badge-verified">OFFICIALLY ACCREDITED</span>
+              <span id="operatorNameText" style="font-size: 0.85rem; color: #ffffff; margin-left: 0.5rem;">
+                <strong>e-Mitra / CSC Kiosk #RJ-4029</strong> • Operator: Rajesh Verma
+              </span>
+            </div>
+            <span style="font-size: 0.75rem; color: var(--accent-cyan); font-family: var(--font-mono);">
+              AUTHENTICATED SESSION
+            </span>
+          </div>
 
           <form id="scaleRegForm" onsubmit="event.preventDefault(); app.openPaymentModal('Commercial Scale Verification (Class III)', 350);">
+            
+            <!-- Mobile Number & OTP Verification Section -->
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-subtle); border-radius: 0.875rem; padding: 1.15rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <label class="form-label" style="margin: 0; color: #38bdf8;">
+                  📱 Retailer Mobile Number (Aadhaar / e-Mitra Consent Verification)
+                </label>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">
+                  No Password Required
+                </span>
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <input type="tel" id="retailerPhoneInput" class="form-input" style="flex: 1; min-width: 180px;" value="+91 98290 12345" placeholder="+91 10-digit mobile number" required>
+                <button type="button" class="btn btn-cyan btn-sm" onclick="app.sendRegistrationOTP()">
+                  📲 Send OTP to Retailer
+                </button>
+              </div>
+
+              <!-- Interactive OTP Verification Box -->
+              <div id="otpVerificationPanel" class="otp-box-wrapper" style="display: none; margin-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="pulse-dot"></span>
+                    <strong style="color: #38bdf8; font-size: 0.85rem;">Enter 6-Digit Consent OTP:</strong>
+                  </div>
+                  <button type="button" onclick="app.autoFillOTP('482910')" class="btn btn-secondary btn-sm" style="font-size: 0.725rem; padding: 0.2rem 0.6rem;">
+                    ⚡ Quick Fill (482910)
+                  </button>
+                </div>
+                <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                  <input type="text" id="regOtpInput" class="otp-digit-field" maxlength="6" placeholder="482910">
+                  <button type="button" class="btn btn-primary btn-sm" onclick="app.verifyRegistrationOTP()">
+                    ✓ Authenticate Retailer Consent
+                  </button>
+                </div>
+                <div id="otpStatusBox" style="margin-top: 0.5rem; font-size: 0.75rem; color: #94a3b8;">
+                  Allows uneducated vendors to authorize registration simply by sharing the OTP received on their basic or smartphone.
+                </div>
+              </div>
+            </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <div class="form-group">
                 <label class="form-label">Business / Shop Name</label>
@@ -150,8 +292,13 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Business Physical Location (For Geo-Routing)</label>
-              <input type="text" class="form-input" value="Shop #14, Main Market, Chandni Chowk, Central Delhi - 110006" required>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <label class="form-label" style="margin: 0;">Business Physical Location / Mandi Shop</label>
+                <button type="button" onclick="app.autoDetectLocation()" class="voice-help-btn" style="padding: 0.15rem 0.5rem; font-size: 0.7rem;">
+                  📍 Auto-Detect Mandi GPS
+                </button>
+              </div>
+              <input type="text" id="regLocationInput" class="form-input" value="Shop #14, Main Market, Chandni Chowk, Central Delhi - 110006" required>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -199,7 +346,7 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <button type="submit" id="btnSubmitReg" class="btn btn-primary" style="width: 100%;">
               💳 Pay Government Verification Fee via Razorpay →
             </button>
           </form>
@@ -808,6 +955,6 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Main JavaScript Engine -->
-  <script src="app.js"></script>
+  <script src="app.js?v=2.1"></script>
 </body>
 </html>
