@@ -148,7 +148,7 @@ body {
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(to right, #ffffff, #a7f3d0, #67e8f9);
+  background: linear-gradient(to right, #0f172a, #0369a1, #0284c7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
@@ -1024,7 +1024,7 @@ main {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: radial-gradient(circle at 50% 45%, #0a1426 0%, #030712 70%, #01040a 100%);
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f1f5f9 70%, #e2e8f0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1133,11 +1133,11 @@ main {
 }
 
 .splash-text-group { margin-top: 2rem; animation: splashFadeUp 0.8s ease 0.3s forwards; opacity: 0; }
-.splash-brand-title { font-size: 2.25rem; font-weight: 800; background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
-.splash-motto { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.25em; color: #38bdf8; font-family: var(--font-mono); margin-top: 0.35rem; text-shadow: 0 0 12px rgba(56, 189, 248, 0.5); }
+.splash-brand-title { font-size: 2.25rem; font-weight: 800; background: linear-gradient(to right, #0f172a, #0369a1, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+.splash-motto { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.25em; color: #0284c7; font-family: var(--font-mono); margin-top: 0.35rem; }
 .splash-progress-group { width: 100%; max-width: 320px; margin-top: 1.75rem; animation: splashFadeUp 0.8s ease 0.5s forwards; opacity: 0; }
-.splash-boot-text { font-size: 0.725rem; font-family: var(--font-mono); color: #67e8f9; margin-bottom: 0.5rem; }
-.splash-progress-track { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 9999px; overflow: hidden; }
+.splash-boot-text { font-size: 0.725rem; font-family: var(--font-mono); color: #0284c7; margin-bottom: 0.5rem; }
+.splash-progress-track { width: 100%; height: 4px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; }
 .splash-progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #10b981, #06b6d4, #38bdf8); box-shadow: 0 0 10px #06b6d4; transition: width 0.15s ease-out; }
 .splash-skip-btn { margin-top: 1.25rem; background: transparent; border: 1px solid #cbd5e1; color: #94a3b8; font-size: 0.75rem; padding: 0.35rem 0.9rem; border-radius: 0.5rem; cursor: pointer; animation: splashFadeUp 0.8s ease 0.7s forwards; opacity: 0; }
 .splash-skip-btn:hover { border-color: #38bdf8; color: var(--text-primary); background: rgba(56, 189, 248, 0.1); }

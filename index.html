@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerifyScale | Online Verification System for Weighing & Measuring Instruments</title>
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=2.8">
+  <link rel="stylesheet" href="styles.css?v=3.3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -41,17 +41,24 @@
       <div class="nav-row">
         
         <!-- Brand / Identity -->
-        <div class="brand-container" onclick="app.switchView('merchant')">
-          <div class="brand-icon-box">
-            <img src="logo.jpg" alt="VerifyScale Logo" class="brand-logo-img">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <!-- Government Emblems -->
+          <div style="display: flex; align-items: center; gap: 0.5rem; padding-right: 1rem; border-right: 2px solid #e2e8f0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Satyameva Jayate" style="height: 3.5rem;">
           </div>
-          <div>
-            <div class="brand-name">
-              VerifyScale
-              <span class="brand-badge">SIH 2026 • SIH26036</span>
+          
+          <div class="brand-container" onclick="app.switchView('merchant')">
+            <div class="brand-icon-box">
+              <img src="logo.jpg" alt="VerifyScale Logo" class="brand-logo-img">
             </div>
-            <div style="font-size: 0.725rem; color: var(--text-muted); font-family: var(--font-mono);">
-              Team: NEXUS NOVA • VERIFY • MEASURE • TRUST
+            <div>
+              <div class="brand-name">
+                VerifyScale
+                <span class="brand-badge">SIH 2026 • SIH26036</span>
+              </div>
+              <div style="font-size: 0.725rem; color: var(--text-muted); font-family: var(--font-mono);">
+                Team: NEXUS NOVA • VERIFY • MEASURE • TRUST
+              </div>
             </div>
           </div>
         </div>
