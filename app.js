@@ -197,14 +197,14 @@ function renderQRCodeSVG(text, size = 160) {
   for (let r = 0; r < modules; r++) {
     for (let c = 0; c < modules; c++) {
       if (grid[r][c]) {
-        svgPaths += `<rect x="${(c * cellSize)}" y="${(r * cellSize)}" width="${cellSize}" height="${cellSize}" fill="#38bdf8" rx="1.5" />`;
+        svgPaths += `<rect x="${(c * cellSize)}" y="${(r * cellSize)}" width="${cellSize}" height="${cellSize}" fill="#000000" rx="0" />`;
       }
     }
   }
 
   return `
     <svg width="${size}" height="${size}" viewBox="0 0 ${size}" xmlns="http://www.w3.org/2000/svg" class="qr-svg">
-      <rect width="100%" height="100%" fill="#05141b" rx="8" />
+      <rect width="100%" height="100%" fill="#ffffff" rx="8" />
       ${svgPaths}
     </svg>
   `;
@@ -593,6 +593,142 @@ class VerifyScaleApp {
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Handle dynamic form dropdowns
+  updateFeeForCategory() {
+    const cat = document.getElementById('instrumentCategorySelect').value;
+    const feeDisplay = document.getElementById('statutoryFeeDisplay');
+    const capacityInput = document.getElementById('capacityInput');
+    const intervalInput = document.getElementById('intervalInput');
+    const makeModelInput = document.getElementById('makeModelInput');
+    const accuracySelect = document.getElementById('accuracyClassSelect');
+    
+    let fee = 350;
+    
+    switch(cat) {
+      case 'scale':
+        fee = 350;
+        capacityInput.value = '30.000 kg';
+        intervalInput.value = '0.005 kg (5g)';
+        makeModelInput.value = 'Essae DX-851 High Precision Electronic Scale';
+        accuracySelect.selectedIndex = 0; // Class III
+        break;
+      case 'weighbridge':
+        fee = 5000;
+        capacityInput.value = '60,000 kg (60 Tonnes)';
+        intervalInput.value = '10.00 kg (10kg division)';
+        makeModelInput.value = 'Avery Weigh-Tronix J-Series Pitless';
+        accuracySelect.selectedIndex = 3; // Class IIII
+        break;
+      case 'fuel':
+        fee = 2000;
+        capacityInput.value = '50 Liters/min';
+        intervalInput.value = '10 ml (Flow tolerance)';
+        makeModelInput.value = 'Gilbarco Veeder-Root Frontier';
+        accuracySelect.selectedIndex = 1; 
+        break;
+      case 'volumetric':
+        fee = 100;
+        capacityInput.value = '5 Liters';
+        intervalInput.value = '10 ml (Meniscus tolerance)';
+        makeModelInput.value = 'Standard Government Brass Conical Measure';
+        accuracySelect.selectedIndex = 0;
+        break;
+      case 'weights':
+        fee = 50;
+        capacityInput.value = 'Set (50g to 10kg)';
+        intervalInput.value = 'Standard Mass (No division)';
+        makeModelInput.value = 'Cast Iron Hexagonal Standard Weights';
+        accuracySelect.selectedIndex = 0;
+        break;
+    }
+    
+    this.currentFormFee = fee;
+    this.currentFormDesc = document.getElementById('instrumentCategorySelect').options[document.getElementById('instrumentCategorySelect').selectedIndex].text;
+    
+    if (feeDisplay) {
+      feeDisplay.textContent = `₹${fee}.00`;
+    }
+
+    // Sync Inspector Simulator dynamically based on what the user registered!
+    this.syncInspectorWorkbench(cat);
+    
+    // Play a tiny UI sound to acknowledge change
+    sfx.play('click');
+  }
+
+  syncInspectorWorkbench(cat) {
+    const title = document.getElementById('inspectorBenchTitle');
+    const unit = document.getElementById('lcdUnit');
+    const cLabel = document.getElementById('inspectorClassLabel');
+    const eLabel = document.getElementById('inspectorELabel');
+    const actionTxt = document.getElementById('inspectorActionText');
+    const subTxt = document.getElementById('inspectorSubText');
+    
+    // Default weights for scale
+    let w = [
+      { id: 'w1', i: '🪙', t: '100g Test Standard' },
+      { id: 'w2', i: '🪙', t: '200g Test Standard' },
+      { id: 'w3', i: '🪙', t: '500g Test Standard' },
+      { id: 'w4', i: '⚖️', t: '1.000 kg Cast Iron' },
+      { id: 'w5', i: '⚖️', t: '2.000 kg Cast Iron' },
+      { id: 'w6', i: '🧱', t: '5.000 kg Hexagonal' }
+    ];
+
+    if (cat === 'fuel' || cat === 'volumetric') {
+      if (title) title.textContent = cat === 'fuel' ? 'Fuel Dispenser (Volumetric Flow Test)' : 'Volumetric Measure Test Bench';
+      if (unit) unit.textContent = 'Liters';
+      if (cLabel) cLabel.textContent = 'FLOW VOL.';
+      if (eLabel) eLabel.textContent = 'e = 10 ml';
+      if (actionTxt) actionTxt.textContent = 'Pour from dispenser into standard Conical Measures';
+      if (subTxt) subTxt.textContent = 'Test for meniscus accuracy and foam/bubble displacement';
+      w = [
+        { id: 'w1', i: '💧', t: '100ml Conical Jar' },
+        { id: 'w2', i: '💧', t: '200ml Conical Jar' },
+        { id: 'w3', i: '💧', t: '500ml Conical Jar' },
+        { id: 'w4', i: '🛢️', t: '1.000 Liter Measure' },
+        { id: 'w5', i: '🛢️', t: '2.000 Liter Measure' },
+        { id: 'w6', i: '⛽', t: '5.000 Liter Measure' }
+      ];
+    } else if (cat === 'weighbridge') {
+      if (title) title.textContent = 'Heavy Industrial Weighbridge Simulator';
+      if (unit) unit.textContent = 'Tonnes';
+      if (cLabel) cLabel.textContent = 'CLASS IIII';
+      if (eLabel) eLabel.textContent = 'e = 10 kg';
+      if (actionTxt) actionTxt.textContent = 'Place massive dead weights onto weighbridge deck';
+      if (subTxt) subTxt.textContent = 'Simulate heavy goods vehicles and eccentric axle loads';
+      w = [
+        { id: 'w1', i: '🚚', t: '100kg Dead Weight' },
+        { id: 'w2', i: '🚚', t: '200kg Dead Weight' },
+        { id: 'w3', i: '🏗️', t: '500kg Dead Weight' },
+        { id: 'w4', i: '🏗️', t: '1.000 Tonne Block' },
+        { id: 'w5', i: '🏗️', t: '2.000 Tonne Block' },
+        { id: 'w6', i: '🏗️', t: '5.000 Tonne Block' }
+      ];
+    } else {
+      // Default / Scales / Weights
+      if (title) title.textContent = 'Electronic Bench Scale (Essae DX-851)';
+      if (unit) unit.textContent = 'kg';
+      if (cLabel) cLabel.textContent = 'CLASS III';
+      if (eLabel) eLabel.textContent = 'e = 0.005 kg';
+      if (actionTxt) actionTxt.textContent = 'Click Calibrated Weights Below to Place on Scale Pan';
+      if (subTxt) subTxt.textContent = 'Click quadrants to test eccentric load error distribution';
+    }
+
+    // Update weight labels in the UI
+    w.forEach(item => {
+      const elI = document.getElementById(item.id + 'i');
+      const elT = document.getElementById(item.id + 't');
+      if (elI) elI.textContent = item.i;
+      if (elT) elT.textContent = item.t;
+    });
+  }
+
+  handleRegistrationSubmit() {
+    const fee = this.currentFormFee || 350;
+    const desc = this.currentFormDesc || 'Commercial Scale Verification (Class III)';
+    this.openPaymentModal(desc, fee);
   }
 
   // Razorpay Checkout Modal Simulation

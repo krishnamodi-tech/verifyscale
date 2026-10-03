@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerifyScale | Online Verification System for Weighing & Measuring Instruments</title>
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=2.3">
+  <link rel="stylesheet" href="styles.css?v=2.8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -135,11 +135,11 @@
       <!-- ============================================================== -->
       <!-- PROMINENT DUAL-ACCESS MODE SWITCHER BANNER -->
       <!-- ============================================================== -->
-      <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.95) 100%); border: 2px solid rgba(6, 182, 212, 0.5); border-radius: 1.25rem; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(6, 182, 212, 0.15);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); pb: 0.75rem; padding-bottom: 0.75rem;">
+      <div style="background: #ffffff; border: 2px solid rgba(6, 182, 212, 0.5); border-radius: 1.25rem; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(6, 182, 212, 0.15);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid #cbd5e1; pb: 0.75rem; padding-bottom: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span class="pulse-dot"></span>
-            <strong style="font-size: 0.9rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em;">
+            <strong style="font-size: 0.9rem; color: #0284c7; text-transform: uppercase; letter-spacing: 0.05em;">
               👉 Choose Who is Submitting this Scale Registration:
             </strong>
           </div>
@@ -151,43 +151,43 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
           
           <!-- Mode 1: Direct Retailer -->
-          <div id="modeCard-self" class="reg-mode-card active" onclick="app.setRegistrationMode('self')" style="background: rgba(16, 185, 129, 0.12); border: 2px solid #10b981; border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+          <div id="modeCard-self" class="reg-mode-card active" onclick="app.setRegistrationMode('self')" style="background: #f0fdf4; border: 2px solid #10b981; border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
               <span style="font-size: 1.5rem;">👤</span>
-              <span class="mode-tag" style="background: #10b981; color: #064e3b; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">CURRENT ACTIVE</span>
+              <span class="mode-tag" style="background: #d1fae5; color: #064e3b; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">CURRENT ACTIVE</span>
             </div>
-            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+            <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
               1. Direct Retailer Self-Registration
             </h4>
-            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+            <p style="font-size: 0.775rem; color: #475569; line-height: 1.4;">
               For educated shopkeepers & merchants. Log in with your mobile number + instant OTP.
             </p>
           </div>
 
           <!-- Mode 2: e-Mitra / CSC Kiosk -->
-          <div id="modeCard-emitra" class="reg-mode-card" onclick="app.setRegistrationMode('emitra')" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+          <div id="modeCard-emitra" class="reg-mode-card" onclick="app.setRegistrationMode('emitra')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
               <span style="font-size: 1.5rem;">🏛️</span>
-              <span class="mode-tag" style="background: rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">ASSISTED KIOSK</span>
+              <span class="mode-tag" style="background: #e2e8f0; color: #475569; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">ASSISTED KIOSK</span>
             </div>
-            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+            <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
               2. e-Mitra / CSC Kiosk Operator
             </h4>
-            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+            <p style="font-size: 0.775rem; color: #475569; line-height: 1.4;">
               For uneducated/rural retailers. Operator fills form & verifies customer via SMS OTP consent.
             </p>
           </div>
 
           <!-- Mode 3: Metrology Officer Camp -->
-          <div id="modeCard-officer" class="reg-mode-card" onclick="app.setRegistrationMode('officer')" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
+          <div id="modeCard-officer" class="reg-mode-card" onclick="app.setRegistrationMode('officer')" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 1rem; padding: 1.15rem; cursor: pointer; transition: all 0.25s;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
               <span style="font-size: 1.5rem;">👮</span>
-              <span class="mode-tag" style="background: rgba(255,255,255,0.1); color: #94a3b8; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">OFFICIAL SPOT CAMP</span>
+              <span class="mode-tag" style="background: #e2e8f0; color: #475569; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">OFFICIAL SPOT CAMP</span>
             </div>
-            <h4 style="font-size: 1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem;">
+            <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
               3. Metrology Officer On-Site Camp
             </h4>
-            <p style="font-size: 0.775rem; color: #94a3b8; line-height: 1.4;">
+            <p style="font-size: 0.775rem; color: #475569; line-height: 1.4;">
               Officers spot-register vendor scales right at mandi stalls with instant merchant OTP sign-off.
             </p>
           </div>
@@ -201,7 +201,7 @@
         <div class="glass-card">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
             <div>
-              <h3 id="regRoleTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem;">
+              <h3 id="regRoleTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
                 <span>📝</span> Retailer / Business Direct Self-Registration
               </h3>
               <p id="regRoleDesc" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
@@ -230,7 +230,7 @@
           <div id="operatorBanner" class="operator-banner" style="display: none;">
             <div>
               <span class="badge-status badge-verified">OFFICIALLY ACCREDITED</span>
-              <span id="operatorNameText" style="font-size: 0.85rem; color: #ffffff; margin-left: 0.5rem;">
+              <span id="operatorNameText" style="font-size: 0.85rem; color: var(--text-primary); margin-left: 0.5rem;">
                 <strong>e-Mitra / CSC Kiosk #RJ-4029</strong> • Operator: Rajesh Verma
               </span>
             </div>
@@ -239,12 +239,12 @@
             </span>
           </div>
 
-          <form id="scaleRegForm" onsubmit="event.preventDefault(); app.openPaymentModal('Commercial Scale Verification (Class III)', 350);">
+          <form id="scaleRegForm" onsubmit="event.preventDefault(); app.handleRegistrationSubmit();">
             
             <!-- Mobile Number & OTP Verification Section -->
-            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-subtle); border-radius: 0.875rem; padding: 1.15rem; margin-bottom: 1.25rem;">
+            <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: 0.875rem; padding: 1.15rem; margin-bottom: 1.25rem;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <label class="form-label" style="margin: 0; color: #38bdf8;">
+                <label class="form-label" style="margin: 0; color: #0284c7;">
                   📱 Retailer Mobile Number (Aadhaar / e-Mitra Consent Verification)
                 </label>
                 <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">
@@ -263,7 +263,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
                   <div style="display: flex; align-items: center; gap: 0.5rem;">
                     <span class="pulse-dot"></span>
-                    <strong style="color: #38bdf8; font-size: 0.85rem;">Enter 6-Digit Consent OTP:</strong>
+                    <strong style="color: #0284c7; font-size: 0.85rem;">Enter 6-Digit Consent OTP:</strong>
                   </div>
                   <button type="button" onclick="app.autoFillOTP('482910')" class="btn btn-secondary btn-sm" style="font-size: 0.725rem; padding: 0.2rem 0.6rem;">
                     ⚡ Quick Fill (482910)
@@ -275,7 +275,7 @@
                     ✓ Authenticate Retailer Consent
                   </button>
                 </div>
-                <div id="otpStatusBox" style="margin-top: 0.5rem; font-size: 0.75rem; color: #94a3b8;">
+                <div id="otpStatusBox" style="margin-top: 0.5rem; font-size: 0.75rem; color: #475569;">
                   Allows uneducated vendors to authorize registration simply by sharing the OTP received on their basic or smartphone.
                 </div>
               </div>
@@ -301,13 +301,24 @@
               <input type="text" id="regLocationInput" class="form-input" value="Shop #14, Main Market, Chandni Chowk, Central Delhi - 110006" required>
             </div>
 
+            <div class="form-group">
+              <label class="form-label">Instrument Category / Type</label>
+              <select class="form-select" id="instrumentCategorySelect" onchange="app.updateFeeForCategory()">
+                <option value="scale" selected>Electronic Weighing Scale (Kirana / Retail)</option>
+                <option value="weighbridge">Heavy Industrial Weighbridge (Dharam Kanta)</option>
+                <option value="fuel">Fuel Dispenser (Petrol Pump)</option>
+                <option value="volumetric">Volumetric Measures (Milk / Oil Liters)</option>
+                <option value="weights">Cast Iron / Brass Standard Weights</option>
+              </select>
+            </div>
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <div class="form-group">
-                <label class="form-label">Instrument Make & Model</label>
-                <input type="text" class="form-input" value="Essae DX-851 High Precision Electronic Scale" required>
+                <label class="form-label" id="makeModelLabel">Instrument Make & Model</label>
+                <input type="text" id="makeModelInput" class="form-input" value="Essae DX-851 High Precision Electronic Scale" required>
               </div>
               <div class="form-group">
-                <label class="form-label">Scale Serial Number (Stamped)</label>
+                <label class="form-label">Hardware Serial / Manufacturing No.</label>
                 <input type="text" class="form-input" value="SN-ES851-9941" required>
               </div>
             </div>
@@ -315,7 +326,7 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
               <div class="form-group">
                 <label class="form-label">Accuracy Class</label>
-                <select class="form-select">
+                <select class="form-select" id="accuracyClassSelect">
                   <option selected>Class III (Commercial Retail)</option>
                   <option>Class II (Jewellery / Precision)</option>
                   <option>Class I (Laboratory Micro)</option>
@@ -323,20 +334,20 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Max Capacity (Max)</label>
-                <input type="text" class="form-input" value="30.000 kg" required>
+                <label class="form-label" id="capacityLabel">Max Capacity (Max)</label>
+                <input type="text" id="capacityInput" class="form-input" value="30.000 kg" required>
               </div>
               <div class="form-group">
-                <label class="form-label">Verification Scale Interval (e)</label>
-                <input type="text" class="form-input" value="0.005 kg (5g)" required>
+                <label class="form-label" id="intervalLabel">Verification Interval / Division</label>
+                <input type="text" id="intervalInput" class="form-input" value="0.005 kg (5g)" required>
               </div>
             </div>
 
-            <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed var(--border-subtle); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem;">
+            <div style="background: #f8fafc; border: 1px dashed var(--border-subtle); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                   <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">STATUTORY FEE (LEGAL METROLOGY SCHEDULE)</span>
-                  <span style="font-size: 1.25rem; font-weight: 800; color: #ffffff; font-family: var(--font-mono);">₹350.00</span>
+                  <span id="statutoryFeeDisplay" style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono);">₹350.00</span>
                   <span style="font-size: 0.75rem; color: var(--accent-emerald);"> (Zero Convenience Fee)</span>
                 </div>
                 <div style="text-align: right;">
@@ -356,14 +367,14 @@
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
           
           <div class="glass-card">
-            <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
               <span>📊</span> Registered Instruments
             </h3>
 
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="font-size: 0.9rem; color: #ffffff;">Essae DX-851 (Counter #1)</strong>
+                  <strong style="font-size: 0.9rem; color: var(--text-primary);">Essae DX-851 (Counter #1)</strong>
                   <span class="badge-status badge-verified">VERIFIED</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">
@@ -376,9 +387,9 @@
                 </div>
               </div>
 
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="font-size: 0.9rem; color: #ffffff;">Platform Weighbridge (Back Storage)</strong>
+                  <strong style="font-size: 0.9rem; color: var(--text-primary);">Platform Weighbridge (Back Storage)</strong>
                   <span class="badge-status badge-pending">PENDING AUDIT</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">
@@ -433,7 +444,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
             <div>
               <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">PHYSICAL TEST BENCH</span>
-              <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">Electronic Bench Scale (Essae DX-851)</h3>
+              <h3 id="inspectorBenchTitle" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">Electronic Bench Scale (Essae DX-851)</h3>
             </div>
             <span class="badge-status badge-verified">
               STANDARDS: NIST HB 44 / OIML R76
@@ -450,10 +461,10 @@
             </div>
             <div style="text-align: center; z-index: 5; pointer-events: none;">
               <span style="font-size: 2.25rem;">⚖️</span>
-              <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-top: 0.25rem;">
+              <p id="inspectorActionText" style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-top: 0.25rem;">
                 Click Calibrated Weights Below to Place on Scale Pan
               </p>
-              <p style="font-size: 0.725rem; color: var(--text-muted);">
+              <p id="inspectorSubText" style="font-size: 0.725rem; color: var(--text-muted);">
                 Click quadrants to test eccentric load error distribution
               </p>
             </div>
@@ -464,11 +475,11 @@
             <div class="scale-lcd-screen">
               <div>
                 <span class="lcd-value" id="lcdValue">0.000</span>
-                <span class="lcd-unit">kg</span>
+                <span class="lcd-unit" id="lcdUnit">kg</span>
               </div>
               <div style="text-align: right;">
-                <span style="font-size: 0.7rem; color: #38bdf8; font-family: var(--font-mono); display: block;">CLASS III</span>
-                <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">e = 0.005 kg</span>
+                <span id="inspectorClassLabel" style="font-size: 0.7rem; color: #0284c7; font-family: var(--font-mono); display: block;">CLASS III</span>
+                <span id="inspectorELabel" style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">e = 0.005 kg</span>
               </div>
             </div>
 
@@ -492,23 +503,23 @@
             </div>
 
             <div class="weights-rack">
-              <div class="weight-item" data-weight="0.100">
-                <span>🪙</span> 100g Test Standard
+              <div class="weight-item" data-weight="0.100" id="w1">
+                <span id="w1i">🪙</span> <span id="w1t">100g Test Standard</span>
               </div>
-              <div class="weight-item" data-weight="0.200">
-                <span>🪙</span> 200g Test Standard
+              <div class="weight-item" data-weight="0.200" id="w2">
+                <span id="w2i">🪙</span> <span id="w2t">200g Test Standard</span>
               </div>
-              <div class="weight-item" data-weight="0.500">
-                <span>🪙</span> 500g Test Standard
+              <div class="weight-item" data-weight="0.500" id="w3">
+                <span id="w3i">🪙</span> <span id="w3t">500g Test Standard</span>
               </div>
-              <div class="weight-item" data-weight="1.000">
-                <span>⚖️</span> 1.000 kg Cast Iron
+              <div class="weight-item" data-weight="1.000" id="w4">
+                <span id="w4i">⚖️</span> <span id="w4t">1.000 kg Cast Iron</span>
               </div>
-              <div class="weight-item" data-weight="2.000">
-                <span>⚖️</span> 2.000 kg Cast Iron
+              <div class="weight-item" data-weight="2.000" id="w5">
+                <span id="w5i">⚖️</span> <span id="w5t">2.000 kg Cast Iron</span>
               </div>
-              <div class="weight-item" data-weight="5.000">
-                <span>🧱</span> 5.000 kg Hexagonal
+              <div class="weight-item" data-weight="5.000" id="w6">
+                <span id="w6i">🧱</span> <span id="w6t">5.000 kg Hexagonal</span>
               </div>
             </div>
           </div>
@@ -529,14 +540,14 @@
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
           
           <div class="glass-card">
-            <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
               <span>📍</span> Geo-Routed Inspection Queue
             </h3>
 
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
               <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 0.75rem; padding: 0.875rem;">
                 <div style="display: flex; justify-content: space-between;">
-                  <strong style="color: #ffffff; font-size: 0.9rem;">Sharma Provisions (Current Site)</strong>
+                  <strong style="color: var(--text-primary); font-size: 0.9rem;">Sharma Provisions (Current Site)</strong>
                   <span class="badge-status badge-verified">ACTIVE TEST</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
@@ -548,9 +559,9 @@
                 </div>
               </div>
 
-              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
                 <div style="display: flex; justify-content: space-between;">
-                  <strong style="color: #ffffff; font-size: 0.9rem;">Royal Sweets & Dairy</strong>
+                  <strong style="color: var(--text-primary); font-size: 0.9rem;">Royal Sweets & Dairy</strong>
                   <span class="badge-status badge-pending">NEXT IN ROUTE</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
@@ -562,9 +573,9 @@
                 </div>
               </div>
 
-              <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 0.75rem; padding: 0.875rem;">
                 <div style="display: flex; justify-content: space-between;">
-                  <strong style="color: #ffffff; font-size: 0.9rem;">Bharat Petroleum Fuel Dispenser #3</strong>
+                  <strong style="color: var(--text-primary); font-size: 0.9rem;">Bharat Petroleum Fuel Dispenser #3</strong>
                   <span class="badge-status badge-pending">SCHEDULED</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
@@ -580,7 +591,7 @@
 
           <!-- Inspector Handbook Standards -->
           <div class="glass-card">
-            <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
               <span>📚</span> Standards Reference (NIST Handbook 44)
             </h4>
             <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;">
@@ -644,7 +655,7 @@
         
         <!-- Interactive QR Scanner Box -->
         <div class="glass-card">
-          <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
             <span>📷</span> Live Camera QR Scanner Simulation
           </h3>
 
@@ -677,7 +688,7 @@
 
         <!-- Search by UID or Shop Name -->
         <div class="glass-card">
-          <h3 style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
             <span>🔍</span> Manual Scale Verification Search
           </h3>
 
@@ -727,7 +738,7 @@
         
         <div class="glass-card">
           <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Active Verified Scales</span>
-          <div style="font-size: 2rem; font-weight: 800; color: #ffffff; font-family: var(--font-mono); margin-top: 0.25rem;">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); margin-top: 0.25rem;">
             48,290
           </div>
           <span style="font-size: 0.75rem; color: var(--accent-emerald);">↑ +12.4% this quarter</span>
@@ -761,7 +772,7 @@
 
       <!-- District Compliance Breakdown Table -->
       <div class="glass-card" style="margin-bottom: 2rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
           <span>🗺️</span> District Metrology Compliance & Inspection Coverage
         </h3>
         <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
@@ -788,7 +799,7 @@
 
       <!-- Cryptographic Audit Ledger Stream -->
       <div class="glass-card">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
           <span>⛓️</span> Immutable Verification Audit Stream (SHA-256 Ledger)
         </h3>
         <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
@@ -811,7 +822,7 @@
           <div style="font-size: 0.75rem; opacity: 0.8;">LEGAL METROLOGY GATEWAY</div>
           <strong id="payTitle" style="font-size: 1rem;">Verification Fee Checkout</strong>
         </div>
-        <button class="modal-close" style="position: static; color: white;" onclick="app.closePaymentModal()">×</button>
+        <button class="modal-close" style="position: static; color: #0f172a;" onclick="app.closePaymentModal()">×</button>
       </div>
       <div class="rzp-body">
         <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.25rem;">
@@ -852,7 +863,7 @@
   <div class="modal-overlay" id="aiVisionModal">
     <div class="modal-container">
       <button class="modal-close" onclick="app.closeAIVisionModal()">×</button>
-      <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
         <span>🤖</span> Gemini AI Vision Scale Inspection Engine
       </h3>
       <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
@@ -882,7 +893,7 @@
   <div class="modal-overlay" id="whistleblowerModal">
     <div class="modal-container">
       <button class="modal-close" onclick="app.closeWhistleblowerModal()">×</button>
-      <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
         <span>🚨</span> Citizen Grievance & Scale Fraud Report
       </h3>
       <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
@@ -920,7 +931,7 @@
   <div class="modal-overlay" id="presentationGuideModal">
     <div class="modal-container" style="max-width: 680px;">
       <button class="modal-close" onclick="document.getElementById('presentationGuideModal').classList.remove('active')">×</button>
-      <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
         <span>🎯</span> SIH 2026 Presentation Walkthrough Guide
       </h3>
       <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
@@ -928,22 +939,22 @@
       </p>
 
       <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+        <div style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
           <strong style="color: var(--accent-emerald);">Slide 2 Demo - Step 1: Merchant Lodges Request & Pays Fee</strong>
           <p style="margin-top: 0.25rem;">Show the Merchant Application form. Click "Pay Government Verification Fee" to showcase the interactive Razorpay payment modal and automated treasury receipt.</p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+        <div style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
           <strong style="color: var(--accent-cyan);">Slide 3 & 4 Demo - Step 2: Inspector NIST Workbench & AI Scanner</strong>
           <p style="margin-top: 0.25rem;">Switch to Field Inspector. Click on the 100g, 1kg, 5kg test weights! Notice the digital LCD flutter and settle. Click "Calculate NIST MPE Tolerance" to show mathematical compliance under NIST Handbook 44 / OIML R76, and open the AI Vision OCR simulator.</p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+        <div style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
           <strong style="color: var(--accent-purple);">Slide 3 & 5 Demo - Step 3: Holographic SHA-256 Certificate</strong>
           <p style="margin-top: 0.25rem;">Move your mouse over the certificate to reveal the real-time 3D tilt and shimmering holographic security seal with verifiable SHA-256 hash.</p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
+        <div style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 0.875rem; border-radius: 0.75rem;">
           <strong style="color: var(--accent-amber);">Slide 5 Demo - Step 4: Citizen QR Scanner & Whistleblower</strong>
           <p style="margin-top: 0.25rem;">Switch to Public QR Verification. Click the demo chips to simulate scanning a genuine vs a fraudulent store scale with instant consumer whistleblowing.</p>
         </div>
